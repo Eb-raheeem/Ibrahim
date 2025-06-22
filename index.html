@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Data Engineer Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            @apply bg-gray-50 text-gray-800;
+        }
+        /* Custom scroll-behavior for smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-md py-4 sticky top-0 z-50">
+        <nav class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-bold text-blue-700 rounded-lg p-2 hover:bg-blue-50 transition-colors duration-300">Your Name</a>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="#about" class="text-gray-600 hover:text-blue-700 transition-colors duration-300 font-medium rounded-lg p-2 hover:bg-gray-100">About</a></li>
+                <li><a href="#skills" class="text-gray-600 hover:text-blue-700 transition-colors duration-300 font-medium rounded-lg p-2 hover:bg-gray-100">Skills</a></li>
+                <li><a href="#projects" class="text-gray-600 hover:text-blue-700 transition-colors duration-300 font-medium rounded-lg p-2 hover:bg-gray-100">Projects</a></li>
+                <li><a href="#contact" class="text-gray-600 hover:text-blue-700 transition-colors duration-300 font-medium rounded-lg p-2 hover:bg-gray-100">Contact</a></li>
+            </ul>
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-blue-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg py-2 mt-2">
+            <ul class="flex flex-col items-center space-y-4">
+                <li><a href="#about" class="block text-gray-600 hover:text-blue-700 transition-colors duration-300 font-medium rounded-lg p-2 hover:bg-gray-100 w-full text-center">About</a></li>
+                <li><a href="#skills" class="block text-gray-600 hover:text-blue-700 transition-colors duration-300 font-medium rounded-lg p-2 hover:bg-gray-100 w-full text-center">Skills</a></li>
+                <li><a href="#projects" class="block text-gray-600 hover:text-blue-700 transition-colors duration-300 font-medium rounded-lg p-2 hover:bg-gray-100 w-full text-center">Projects</a></li>
+                <li><a href="#contact" class="block text-gray-600 hover:text-blue-700 transition-colors duration-300 font-medium rounded-lg p-2 hover:bg-gray-100 w-full text-center">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="bg-blue-700 text-white py-20 md:py-32 flex items-center justify-center min-h-screen-75">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-center md:space-x-12">
+                <div class="md:w-1/3 mb-8 md:mb-0">
+                    <!-- Placeholder Image -->
+                    <img src="https://placehold.co/300x300/e0e0e0/555555?text=Your+Photo" alt="Your Photo" class="w-48 h-48 md:w-64 md:h-64 rounded-full mx-auto shadow-xl border-4 border-white object-cover">
+                </div>
+                <div class="md:w-2/3">
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-down">
+                        Hello, I'm <span class="text-blue-200">Your Name</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 font-light animate-fade-in-up">
+                        A passionate <span class="font-semibold text-blue-300">Data Engineer</span> building robust data solutions.
+                    </p>
+                    <a href="#projects" class="inline-block bg-white text-blue-700 hover:bg-blue-100 transition-colors duration-300 font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105">
+                        View My Projects
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">About Me</h2>
+            <div class="max-w-3xl mx-auto text-lg leading-relaxed text-gray-700">
+                <p class="mb-4">
+                    As a dedicated Data Engineer, I specialize in designing, building, and optimizing scalable data pipelines and warehousing solutions. My expertise spans the entire data lifecycle, from raw data ingestion to insightful analytics, ensuring data integrity and accessibility for business intelligence.
+                </p>
+                <p class="mb-4">
+                    I thrive on transforming complex data challenges into streamlined, efficient systems. With a strong foundation in ETL processes, SQL scripting, Python development, and database management, I am adept at working with large datasets and big data technologies to unlock valuable insights.
+                </p>
+                <p>
+                    My goal is to empower organizations with reliable data infrastructure, automating processes and troubleshooting issues to maintain seamless data flows. I am continuously exploring new technologies and methodologies to stay at the forefront of data engineering innovation.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 md:py-24 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">My Skills</h2>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Skill Card 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">ETL & Data Warehousing</h3>
+                    <p class="text-gray-600">
+                        Designing and implementing robust Extract, Transform, Load processes. Expertise in building and managing data warehouses for optimal performance and analytics.
+                    </p>
+                </div>
+                <!-- Skill Card 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">SQL Scripting & Database Management</h3>
+                    <p class="text-gray-600">
+                        Advanced SQL for data manipulation and querying. Proficient in database design, administration, and optimization across various RDBMS.
+                    </p>
+                </div>
+                <!-- Skill Card 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">Python Development</h3>
+                    <p class="text-gray-600">
+                        Developing scalable Python scripts for data processing, automation, API integrations, and machine learning data preparation.
+                    </p>
+                </div>
+                <!-- Skill Card 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">Big Data Technologies</h3>
+                    <p class="text-gray-600">
+                        Experience with distributed computing frameworks and tools for processing and analyzing large volumes of data. (e.g., Apache Spark, Hadoop)
+                    </p>
+                </div>
+                <!-- Skill Card 5 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">Automation & Orchestration</h3>
+                    <p class="text-gray-600">
+                        Automating data workflows, job scheduling, and monitoring for efficient and reliable data operations. (e.g., Airflow, Cron)
+                    </p>
+                </div>
+                <!-- Skill Card 6 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">Troubleshooting & Optimization</h3>
+                    <p class="text-gray-600">
+                        Identifying and resolving data pipeline bottlenecks, performance issues, and data quality problems.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">My Projects</h2>
+            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 (Future Project) -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border border-gray-200">
+                    <h3 class="text-2xl font-bold mb-3 text-gray-800">Project Title 1: Cloud Data Lake Modernization</h3>
+                    <p class="text-gray-600 mb-4">
+                        Designing and implementing a scalable data lake on a cloud platform (e.g., AWS S3, Azure Data Lake Storage) with optimized data ingestion and processing layers.
+                    </p>
+                    <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full">Coming Soon</span>
+                    <div class="mt-4 text-gray-500 text-sm">
+                        <p class="mb-1"><strong>Key Technologies:</strong> AWS S3, Apache Spark, Delta Lake, Glue ETL</p>
+                        <p><strong>Status:</strong> Planning & Initial Design</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 (Future Project) -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border border-gray-200">
+                    <h3 class="text-2xl font-bold mb-3 text-gray-800">Project Title 2: Real-time Analytics Dashboard</h3>
+                    <p class="text-gray-600 mb-4">
+                        Building an end-to-end real-time data pipeline for streaming data, transforming it, and visualizing insights on an interactive dashboard.
+                    </p>
+                    <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full">Coming Soon</span>
+                    <div class="mt-4 text-gray-500 text-sm">
+                        <p class="mb-1"><strong>Key Technologies:</strong> Kafka, Flink/Spark Streaming, PostgreSQL, Power BI/Tableau</p>
+                        <p><strong>Status:</strong> Research & Data Modeling</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 (Future Project) -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border border-gray-200">
+                    <h3 class="text-2xl font-bold mb-3 text-gray-800">Project Title 3: Data Quality Framework</h3>
+                    <p class="text-gray-600 mb-4">
+                        Developing an automated data quality framework to profile, validate, and monitor data across various sources, ensuring high data reliability.
+                    </p>
+                    <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full">Coming Soon</span>
+                    <div class="mt-4 text-gray-500 text-sm">
+                        <p class="mb-1"><strong>Key Technologies:</strong> Python, Great Expectations, Airflow</p>
+                        <p><strong>Status:</strong> Conceptualization</p>
+                    </div>
+                </div>
+
+                <!-- You can add more project cards here following the same structure -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-24 bg-blue-700 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-8">Get In Touch</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Have a data challenge or want to discuss a project? Feel free to reach out!
+            </p>
+            <div class="flex flex-col items-center justify-center space-y-4 md:space-y-0 md:flex-row md:space-x-8">
+                <a href="mailto:your.email@example.com" class="bg-white text-blue-700 hover:bg-blue-100 transition-colors duration-300 font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105">
+                    Email Me
+                </a>
+                <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="bg-white text-blue-700 hover:bg-blue-100 transition-colors duration-300 font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105">
+                    LinkedIn
+                </a>
+                <a href="https://github.com/yourgithub" target="_blank" class="bg-white text-blue-700 hover:bg-blue-100 transition-colors duration-300 font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105">
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-8 text-center">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2025 Your Name. All rights reserved.</p>
+            <p class="text-sm mt-2">Built with ❤️ and Tailwind CSS.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu after clicking a link
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
