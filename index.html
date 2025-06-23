@@ -3,243 +3,546 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Data Engineer Portfolio</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Ibrahim Gbenga Yunusa - Data Engineer Portfolio</title>
+    <!-- Tailwind CSS CDN for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter for modern typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Custom styles for the black, white, and professional blue theme */
         body {
             font-family: 'Inter', sans-serif;
-            @apply bg-gray-50 text-gray-800;
+            background-color: #0d0d0d; /* Slightly off-black for depth */
+            color: #e0e0e0; /* Off-white for readability */
         }
-        /* Custom scroll-behavior for smooth scrolling */
-        html {
-            scroll-behavior: smooth;
+        /* Accent text color - Professional blue, no shadow */
+        .accent-text {
+            color: #60A5FA; /* Tailwind blue-400 for a vibrant, professional blue */
+        }
+        /* Accent border effect - Professional blue, no shadow */
+        .accent-border {
+            border-color: #3B82F6; /* Tailwind blue-500 for a solid border */
+        }
+        /* Accent background hover effect for interactive elements - Professional blue, no shadow */
+        .accent-bg-hover:hover {
+            background-color: #3B82F6; /* Tailwind blue-500 for solid hover background */
+            color: #0d0d0d; /* Dark text on hover */
+        }
+        /* Styles for scroll-in animation */
+        .scroll-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Modal overlay styling */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top of everything */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.8); /* Black w/ opacity for overlay */
+            backdrop-filter: blur(8px); /* Blur effect for modern feel */
+            -webkit-backdrop-filter: blur(8px); /* Safari support for backdrop-filter */
+        }
+        /* Modal content box styling */
+        .modal-content {
+            background-color: #1a1a1a; /* Darker background for modal content */
+            margin: 5% auto; /* Centered with some top margin */
+            padding: 30px;
+            border: 1px solid #3B82F6; /* Professional blue border */
+            width: 90%; /* Responsive width */
+            max-width: 800px; /* Max width for larger screens */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); /* Subtle blue shadow */
+            position: relative; /* For absolute positioning of close button */
+        }
+        /* Close button for the modal */
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #60A5FA; /* Accent blue hover effect */
+            text-decoration: none;
+            cursor: pointer;
+        }
+        /* Custom scrollbar for Webkit browsers (Chrome, Safari) */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a; /* Darker track */
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #60A5FA; /* Accent blue thumb */
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3B82F6; /* Slightly darker accent blue on hover */
         }
     </style>
 </head>
 <body>
-
-    <!-- Header & Navigation -->
-    <header class="bg-white shadow-md py-4 sticky top-0 z-50">
-        <nav class="container mx-auto px-4 flex justify-between items-center">
-            <a href="#hero" class="text-2xl font-bold text-blue-700 rounded-lg p-2 hover:bg-blue-50 transition-colors duration-300">Your Name</a>
-            <ul class="hidden md:flex space-x-6">
-                <li><a href="#about" class="text-gray-600 hover:text-blue-700 transition-colors duration-300 font-medium rounded-lg p-2 hover:bg-gray-100">About</a></li>
-                <li><a href="#skills" class="text-gray-600 hover:text-blue-700 transition-colors duration-300 font-medium rounded-lg p-2 hover:bg-gray-100">Skills</a></li>
-                <li><a href="#projects" class="text-gray-600 hover:text-blue-700 transition-colors duration-300 font-medium rounded-lg p-2 hover:bg-gray-100">Projects</a></li>
-                <li><a href="#contact" class="text-gray-600 hover:text-blue-700 transition-colors duration-300 font-medium rounded-lg p-2 hover:bg-gray-100">Contact</a></li>
-            </ul>
-            <!-- Mobile Menu Button (Hamburger) -->
-            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-blue-700 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
-        </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg py-2 mt-2">
-            <ul class="flex flex-col items-center space-y-4">
-                <li><a href="#about" class="block text-gray-600 hover:text-blue-700 transition-colors duration-300 font-medium rounded-lg p-2 hover:bg-gray-100 w-full text-center">About</a></li>
-                <li><a href="#skills" class="block text-gray-600 hover:text-blue-700 transition-colors duration-300 font-medium rounded-lg p-2 hover:bg-gray-100 w-full text-center">Skills</a></li>
-                <li><a href="#projects" class="block text-gray-600 hover:text-blue-700 transition-colors duration-300 font-medium rounded-lg p-2 hover:bg-gray-100 w-full text-center">Projects</a></li>
-                <li><a href="#contact" class="block text-gray-600 hover:text-blue-700 transition-colors duration-300 font-medium rounded-lg p-2 hover:bg-gray-100 w-full text-center">Contact</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="hero" class="bg-blue-700 text-white py-20 md:py-32 flex items-center justify-center min-h-screen-75">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex flex-col md:flex-row items-center justify-center md:space-x-12">
-                <div class="md:w-1/3 mb-8 md:mb-0">
-                    <!-- Placeholder Image -->
-                    <img src="https://placehold.co/300x300/e0e0e0/555555?text=Your+Photo" alt="Your Photo" class="w-48 h-48 md:w-64 md:h-64 rounded-full mx-auto shadow-xl border-4 border-white object-cover">
+    <!-- Main container for the entire portfolio, setting a dark background -->
+    <div class="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center">
+        <!-- Navigation Header - Fixed at the top, responsive padding -->
+        <header class="w-full bg-gray-800 shadow-lg fixed top-0 left-0 z-50 py-4 px-6 md:px-12">
+            <nav class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+                <!-- Logo/Name with accent color -->
+                <a href="#hero" class="text-2xl font-bold accent-text mb-4 md:mb-0">Ibrahim.dev</a>
+                <!-- Navigation links, responsive layout -->
+                <div class="flex flex-wrap justify-center space-x-4 md:space-x-8">
+                    <a href="#hero" class="text-gray-300 hover:text-white accent-bg-hover px-3 py-1 rounded-md transition duration-300">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-white accent-bg-hover px-3 py-1 rounded-md transition duration-300">About</a>
+                    <a href="#skills" class="text-gray-300 hover:text-white accent-bg-hover px-3 py-1 rounded-md transition duration-300">Skills</a>
+                    <a href="#projects" class="text-gray-300 hover:text-white accent-bg-hover px-3 py-1 rounded-md transition duration-300">Projects</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white accent-bg-hover px-3 py-1 rounded-md transition duration-300">Contact</a>
                 </div>
-                <div class="md:w-2/3">
-                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-down">
-                        Hello, I'm <span class="text-blue-200">Your Name</span>
-                    </h1>
-                    <p class="text-xl md:text-2xl mb-8 font-light animate-fade-in-up">
-                        A passionate <span class="font-semibold text-blue-300">Data Engineer</span> building robust data solutions.
+            </nav>
+        </header>
+
+        <!-- Hero Section - Full screen height, centered content with background image -->
+        <section id="hero" class="relative w-full min-h-screen flex items-center justify-center text-center p-6 md:p-12 mt-20 md:mt-0">
+            <!-- Subtle background image for visual interest - Updated text in placeholder image to reflect new color -->
+            <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('https://placehold.co/1920x1080/000000/60A5FA?text=DATA+ENGINEERING');"></div>
+            <!-- Main content for hero section -->
+            <div class="z-10 max-w-4xl mx-auto scroll-section">
+                <!-- Name with accent color and animation -->
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 accent-text animate-pulse">
+                    Ibrahim Gbenga Yunusa
+                </h1>
+                <!-- Brand statement -->
+                <p class="text-xl md:text-3xl font-light mb-8 text-white">
+                    I build data systems that don’t just scale; they elevate decision-making and drive growth.
+                </p>
+                <!-- Call-to-action button - Updated background color to blue-600, no neon border/shadow -->
+                <a href="#projects" class="inline-block bg-blue-600 text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out accent-bg-hover">
+                    Explore My Projects
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section - Responsive layout with image and text -->
+        <section id="about" class="w-full max-w-6xl mx-auto py-16 px-6 md:px-12 scroll-section">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 accent-text">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center md:space-x-8">
+                <!-- Profile Image - Updated border color to blue-400 -->
+                <div class="md:w-1/3 mb-8 md:mb-0">
+                    <img src="https://placehold.co/400x400/1f2937/d1d5db?text=Profile" alt="Ibrahim Gbenga Yunusa" class="rounded-full w-48 h-48 md:w-64 md:h-64 mx-auto object-cover border-4 border-blue-400 shadow-lg">
+                </div>
+                <!-- About text content -->
+                <div class="md:w-2/3 text-lg leading-relaxed text-gray-300">
+                    <p class="mb-4">
+                        As an experienced Data Engineer, I specialize in transforming raw data into actionable insights, driving business growth and efficiency. My expertise spans ETL development, data integration, and optimizing database performance across diverse platforms like SQL Server, Oracle, and Azure Synapse.
                     </p>
-                    <a href="#projects" class="inline-block bg-white text-blue-700 hover:bg-blue-100 transition-colors duration-300 font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105">
-                        View My Projects
+                    <p class="mb-4">
+                        I'm adept at crafting scalable data pipelines using SSIS, Python, and Azure Data Factory, ensuring data quality and security through robust governance and compliance standards. My background includes automating reporting workflows, significantly reducing turnaround times and manual effort.
+                    </p>
+                    <p>
+                        I am passionate about building robust, high-performance data systems that empower organizations to make informed, data-driven decisions.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section - Grid layout for various skill categories -->
+        <section id="skills" class="w-full max-w-6xl mx-auto py-16 px-6 md:px-12 scroll-section">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 accent-text">My Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Skill Category Card 1: Data Engineering & Warehousing -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 accent-border transform hover:scale-105 transition duration-300 ease-in-out">
+                    <h3 class="text-xl font-semibold mb-4 accent-text"><i class="fas fa-cogs mr-3"></i>Data Engineering & Warehousing</h3>
+                    <ul class="list-disc list-inside text-gray-300 space-y-1">
+                        <li>ETL/ELT Development</li>
+                        <li>Data Modeling (Kimball, Inmon)</li>
+                        <li>Data Marts & Data Warehouses</li>
+                        <li>Data Lakes & Lakehouses</li>
+                        <li>Data Integration</li>
+                        <li>Data Pipeline Orchestration (SSIS, Airflow, dbt)</li>
+                        <li>Schema Design & Optimization</li>
+                    </ul>
+                </div>
+                <!-- Skill Category Card 2: Database Management -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 accent-border transform hover:scale-105 transition duration-300 ease-in-out">
+                    <h3 class="text-xl font-semibold mb-4 accent-text"><i class="fas fa-database mr-3"></i>Database Management</h3>
+                    <ul class="list-disc list-inside text-gray-300 space-y-1">
+                        <li>SQL Server</li>
+                        <li>Oracle Database</li>
+                        <li>Azure Synapse Analytics</li>
+                        <li>NoSQL Databases (e.g., MongoDB, Cassandra Concepts)</li>
+                        <li>Performance Tuning & Query Optimization</li>
+                        <li>Data Migration Strategies</li>
+                        <li>Indexing & Partitioning</li>
+                    </ul>
+                </div>
+                <!-- Skill Category Card 3: Programming & Scripting -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 accent-border transform hover:scale-105 transition duration-300 ease-in-out">
+                    <h3 class="text-xl font-semibold mb-4 accent-text"><i class="fas fa-code mr-3"></i>Programming & Scripting</h3>
+                    <ul class="list-disc list-inside text-gray-300 space-y-1">
+                        <li>SQL (T-SQL, PL/SQL)</li>
+                        <li>Python for Data Processing (Pandas, PySpark)</li>
+                        <li>Shell Scripting</li>
+                        <li>API Integration</li>
+                        <li>Script Automation</li>
+                    </ul>
+                </div>
+                <!-- Skill Category Card 4: Cloud Technologies & Big Data -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 accent-border transform hover:scale-105 transition duration-300 ease-in-out">
+                    <h3 class="text-xl font-semibold mb-4 accent-text"><i class="fas fa-cloud mr-3"></i>Cloud Technologies & Big Data</h3>
+                    <ul class="list-disc list-inside text-gray-300 space-y-1">
+                        <li>Azure Data Factory</li>
+                        <li>Azure SQL Database</li>
+                        <li>Azure Blob Storage</li>
+                        <li>Azure Data Lake Storage (ADLS)</li>
+                        <li>Oracle Cloud Infrastructure (OCI)</li>
+                        <li>Big Data Concepts (e.g., Hadoop, Spark Ecosystem)</li>
+                    </ul>
+                </div>
+                <!-- Skill Category Card 5: Business Intelligence & Reporting -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 accent-border transform hover:scale-105 transition duration-300 ease-in-out">
+                    <h3 class="text-xl font-semibold mb-4 accent-text"><i class="fas fa-chart-bar mr-3"></i>BI & Reporting</h3>
+                    <ul class="list-disc list-inside text-gray-300 space-y-1">
+                        <li>Power BI</li>
+                        <li>SQL Server Reporting Services (SSRS)</li>
+                        <li>Dashboard & Report Development</li>
+                        <li>Data Visualization Principles</li>
+                        <li>Report Automation Frameworks</li>
+                        <li>Advanced Excel for Analysis</li>
+                    </ul>
+                </div>
+                <!-- Skill Category Card 6: Data Governance & Operations -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 accent-border transform hover:scale-105 transition duration-300 ease-in-out">
+                    <h3 class="text-xl font-semibold mb-4 accent-text"><i class="fas fa-shield-alt mr-3"></i>Data Governance & Operations</h3>
+                    <ul class="list-disc list-inside text-gray-300 space-y-1">
+                        <li>Data Quality Assurance</li>
+                        <li>Data Testing Methodologies</li>
+                        <li>Anomaly Detection</li>
+                        <li>Metadata Management</li>
+                        <li>Data Lineage & Documentation</li>
+                        <li>Version Control (Git)</li>
+                        <li>CI/CD for Data Engineering</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section - Grid layout for project cards -->
+        <section id="projects" class="w-full max-w-6xl mx-auto py-16 px-6 md:px-12 scroll-section">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 accent-text">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"> <!-- Adjusted to 4 columns for new project -->
+                <!-- Project 1 Card: Data Marts -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 accent-border flex flex-col h-full transform hover:scale-105 transition duration-300 ease-in-out">
+                    <h3 class="text-xl font-semibold mb-3 accent-text">Business-Specific Data Marts for Enhanced Reporting and Analytics</h3>
+                    <p class="text-gray-300 text-sm mb-4 flex-grow">
+                        Designed and implemented specialized data marts (Account, Customer, Transactional, Channel) to improve data accessibility, enhance query performance, and enable tailored analytics. Utilized dimensional modeling and automated ETL pipelines.
+                    </p>
+                    <!-- Updated button background color to blue-600 -->
+                    <button class="bg-blue-600 text-gray-900 font-bold py-2 px-4 rounded-full mt-4 accent-bg-hover read-more-btn" data-project="datamarts">Read More</button>
+                </div>
+
+                <!-- Project 2 Card: RAC System -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 accent-border flex flex-col h-full transform hover:scale-105 transition duration-300 ease-in-out">
+                    <h3 class="text-xl font-semibold mb-3 accent-text">Risk Assessment Criteria (RAC) System for Loan Eligibility</h3>
+                    <p class="text-gray-300 text-sm mb-4 flex-grow">
+                        Developed an automated, scalable, and data-driven system using Oracle PL/SQL to assess customer loan eligibility, replacing manual evaluations and reducing onboarding time.
+                    </p>
+                    <!-- Updated button background color to blue-600 -->
+                    <button class="bg-blue-600 text-gray-900 font-bold py-2 px-4 rounded-full mt-4 accent-bg-hover read-more-btn" data-project="rac">Read More</button>
+                </div>
+
+                <!-- Project 3 Card: SSOT Implementation -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 accent-border flex flex-col h-full transform hover:scale-105 transition duration-300 ease-in-out">
+                    <h3 class="text-xl font-semibold mb-3 accent-text">Single Source of Truth (SSOT) Implementation for Bank-wide Data Consolidation</h3>
+                    <p class="text-gray-300 text-sm mb-4 flex-grow">
+                        Consolidated disparate data sources into a centralized data warehouse, increasing data reliability and accessibility. Developed Oracle packages, SSIS pipelines, and SSRS reports for over 40 key metrics.
+                    </p>
+                    <!-- Updated button background color to blue-600 -->
+                    <button class="bg-blue-600 text-gray-900 font-bold py-2 px-4 rounded-full mt-4 accent-bg-hover read-more-btn" data-project="ssot">Read More</button>
+                </div>
+
+                <!-- NEW Project Card: NYC Payroll Data Analytics (GitHub) -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 accent-border flex flex-col h-full transform hover:scale-105 transition duration-300 ease-in-out">
+                    <h3 class="text-xl font-semibold mb-3 accent-text">NYC Payroll Data Analytics (GitHub)</h3>
+                    <p class="text-gray-300 text-sm mb-4 flex-grow">
+                        Developed data integration pipelines for NYC Payroll Data Analytics, including dataflow, dataset, factory, linked service, and pipeline components for comprehensive data handling.
+                    </p>
+                    <!-- Button to link to GitHub repo (opens in new tab) -->
+                    <a href="https://github.com/Eb-raheeem/Udacity" target="_blank" rel="noopener noreferrer" class="bg-blue-600 text-gray-900 font-bold py-2 px-4 rounded-full mt-4 text-center accent-bg-hover">View on GitHub <i class="fab fa-github ml-2"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section - Centered content with contact details -->
+        <section id="contact" class="w-full max-w-4xl mx-auto py-16 px-6 md:px-12 text-center scroll-section">
+            <h2 class="text-3xl md:text-4xl font-bold mb-10 accent-text">Get in Touch</h2>
+            <div class="bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-700 accent-border inline-block">
+                <p class="text-lg text-gray-300 mb-6">
+                    Have an interesting project or just want to connect? Feel free to reach out!
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <!-- Email address with copy button -->
+                    <a href="mailto:ibrahimgbenga21@gmail.com" class="text-lg text-white hover:text-blue-400 transition duration-300 flex items-center group">
+                        <i class="fas fa-envelope mr-3 accent-text group-hover:animate-bounce"></i>
+                        <span id="emailText">ibrahimgbenga21@gmail.com</span>
+                        <button id="copyEmail" class="ml-3 text-gray-400 hover:text-blue-400 transition duration-300 focus:outline-none" title="Copy Email">
+                            <i class="fas fa-copy text-sm"></i>
+                        </button>
+                    </a>
+                    <!-- LinkedIn profile link -->
+                    <a href="https://linkedin.com/in/ibrahim-yunusa" target="_blank" rel="noopener noreferrer" class="text-lg text-white hover:text-blue-400 transition duration-300 flex items-center group">
+                        <i class="fab fa-linkedin mr-3 accent-text group-hover:animate-pulse"></i>
+                        LinkedIn
                     </a>
                 </div>
+                <!-- Confirmation message for email copy - Updated text color to blue-400 -->
+                <p id="copyConfirmation" class="text-blue-400 text-sm mt-2 opacity-0 transition-opacity duration-300">Email copied!</p>
+            </div>
+        </section>
+
+        <!-- Footer - Copyright information -->
+        <footer class="w-full bg-gray-800 py-6 px-6 md:px-12 text-center text-gray-400 text-sm mt-12">
+            <p>&copy; <span id="currentYear"></span> Ibrahim Gbenga Yunusa. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Project Details Modal - Hidden by default, appears on "Read More" click -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 id="modalTitle" class="text-3xl font-bold mb-4 accent-text"></h3>
+            <!-- Content for specific project details loaded dynamically -->
+            <div id="modalContent" class="text-gray-300 leading-relaxed text-base overflow-y-auto max-h-96 pr-4">
+                <!-- Project details will be loaded here by JavaScript -->
             </div>
         </div>
-    </section>
-
-    <!-- About Me Section -->
-    <section id="about" class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">About Me</h2>
-            <div class="max-w-3xl mx-auto text-lg leading-relaxed text-gray-700">
-                <p class="mb-4">
-                    As a dedicated Data Engineer, I specialize in designing, building, and optimizing scalable data pipelines and warehousing solutions. My expertise spans the entire data lifecycle, from raw data ingestion to insightful analytics, ensuring data integrity and accessibility for business intelligence.
-                </p>
-                <p class="mb-4">
-                    I thrive on transforming complex data challenges into streamlined, efficient systems. With a strong foundation in ETL processes, SQL scripting, Python development, and database management, I am adept at working with large datasets and big data technologies to unlock valuable insights.
-                </p>
-                <p>
-                    My goal is to empower organizations with reliable data infrastructure, automating processes and troubleshooting issues to maintain seamless data flows. I am continuously exploring new technologies and methodologies to stay at the forefront of data engineering innovation.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-16 md:py-24 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">My Skills</h2>
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Skill Card 1 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-                    <h3 class="text-xl font-semibold mb-3 text-blue-700">ETL & Data Warehousing</h3>
-                    <p class="text-gray-600">
-                        Designing and implementing robust Extract, Transform, Load processes. Expertise in building and managing data warehouses for optimal performance and analytics.
-                    </p>
-                </div>
-                <!-- Skill Card 2 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-                    <h3 class="text-xl font-semibold mb-3 text-blue-700">SQL Scripting & Database Management</h3>
-                    <p class="text-gray-600">
-                        Advanced SQL for data manipulation and querying. Proficient in database design, administration, and optimization across various RDBMS.
-                    </p>
-                </div>
-                <!-- Skill Card 3 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-                    <h3 class="text-xl font-semibold mb-3 text-blue-700">Python Development</h3>
-                    <p class="text-gray-600">
-                        Developing scalable Python scripts for data processing, automation, API integrations, and machine learning data preparation.
-                    </p>
-                </div>
-                <!-- Skill Card 4 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-                    <h3 class="text-xl font-semibold mb-3 text-blue-700">Big Data Technologies</h3>
-                    <p class="text-gray-600">
-                        Experience with distributed computing frameworks and tools for processing and analyzing large volumes of data. (e.g., Apache Spark, Hadoop)
-                    </p>
-                </div>
-                <!-- Skill Card 5 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-                    <h3 class="text-xl font-semibold mb-3 text-blue-700">Automation & Orchestration</h3>
-                    <p class="text-gray-600">
-                        Automating data workflows, job scheduling, and monitoring for efficient and reliable data operations. (e.g., Airflow, Cron)
-                    </p>
-                </div>
-                <!-- Skill Card 6 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-                    <h3 class="text-xl font-semibold mb-3 text-blue-700">Troubleshooting & Optimization</h3>
-                    <p class="text-gray-600">
-                        Identifying and resolving data pipeline bottlenecks, performance issues, and data quality problems.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">My Projects</h2>
-            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project Card 1 (Future Project) -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border border-gray-200">
-                    <h3 class="text-2xl font-bold mb-3 text-gray-800">Project Title 1: Cloud Data Lake Modernization</h3>
-                    <p class="text-gray-600 mb-4">
-                        Designing and implementing a scalable data lake on a cloud platform (e.g., AWS S3, Azure Data Lake Storage) with optimized data ingestion and processing layers.
-                    </p>
-                    <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full">Coming Soon</span>
-                    <div class="mt-4 text-gray-500 text-sm">
-                        <p class="mb-1"><strong>Key Technologies:</strong> AWS S3, Apache Spark, Delta Lake, Glue ETL</p>
-                        <p><strong>Status:</strong> Planning & Initial Design</p>
-                    </div>
-                </div>
-
-                <!-- Project Card 2 (Future Project) -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border border-gray-200">
-                    <h3 class="text-2xl font-bold mb-3 text-gray-800">Project Title 2: Real-time Analytics Dashboard</h3>
-                    <p class="text-gray-600 mb-4">
-                        Building an end-to-end real-time data pipeline for streaming data, transforming it, and visualizing insights on an interactive dashboard.
-                    </p>
-                    <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full">Coming Soon</span>
-                    <div class="mt-4 text-gray-500 text-sm">
-                        <p class="mb-1"><strong>Key Technologies:</strong> Kafka, Flink/Spark Streaming, PostgreSQL, Power BI/Tableau</p>
-                        <p><strong>Status:</strong> Research & Data Modeling</p>
-                    </div>
-                </div>
-
-                <!-- Project Card 3 (Future Project) -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border border-gray-200">
-                    <h3 class="text-2xl font-bold mb-3 text-gray-800">Project Title 3: Data Quality Framework</h3>
-                    <p class="text-gray-600 mb-4">
-                        Developing an automated data quality framework to profile, validate, and monitor data across various sources, ensuring high data reliability.
-                    </p>
-                    <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full">Coming Soon</span>
-                    <div class="mt-4 text-gray-500 text-sm">
-                        <p class="mb-1"><strong>Key Technologies:</strong> Python, Great Expectations, Airflow</p>
-                        <p><strong>Status:</strong> Conceptualization</p>
-                    </div>
-                </div>
-
-                <!-- You can add more project cards here following the same structure -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 md:py-24 bg-blue-700 text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold mb-8">Get In Touch</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">
-                Have a data challenge or want to discuss a project? Feel free to reach out!
-            </p>
-            <div class="flex flex-col items-center justify-center space-y-4 md:space-y-0 md:flex-row md:space-x-8">
-                <a href="mailto:your.email@example.com" class="bg-white text-blue-700 hover:bg-blue-100 transition-colors duration-300 font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105">
-                    Email Me
-                </a>
-                <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="bg-white text-blue-700 hover:bg-blue-100 transition-colors duration-300 font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105">
-                    LinkedIn
-                </a>
-                <a href="https://github.com/yourgithub" target="_blank" class="bg-white text-blue-700 hover:bg-blue-100 transition-colors duration-300 font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105">
-                    GitHub
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-300 py-8 text-center">
-        <div class="container mx-auto px-4">
-            <p>&copy; 2025 Your Name. All rights reserved.</p>
-            <p class="text-sm mt-2">Built with ❤️ and Tailwind CSS.</p>
-        </div>
-    </footer>
+    </div>
 
     <script>
-        // Smooth scroll for internal links
+        // Smooth scrolling for all internal navigation links (e.g., #hero, #about)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+                e.preventDefault(); // Prevent default anchor click behavior
 
+                // Scroll to the target section smoothly
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+            });
+        });
 
-                // Close mobile menu after clicking a link
-                const mobileMenu = document.getElementById('mobile-menu');
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
+        // Set the current year dynamically in the footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Intersection Observer for scroll-in animations
+        const scrollSections = document.querySelectorAll('.scroll-section'); // Select all elements with this class
+        const observerOptions = {
+            root: null, // Use the viewport as the root
+            rootMargin: '0px', // No margin around the root
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // If the element is intersecting (visible), add the 'is-visible' class
+                    entry.target.classList.add('is-visible');
+                    // Optionally, uncomment the line below if you want the animation to run only once per element
+                    // observer.unobserve(entry.target);
+                } else {
+                    // If the element is not intersecting (out of view), remove the 'is-visible' class
+                    // This makes the animation reset when scrolling away and re-appear when scrolling back
+                    entry.target.classList.remove('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        // Attach the observer to each scroll section
+        scrollSections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Functionality to copy email to clipboard
+        const copyEmailBtn = document.getElementById('copyEmail');
+        const emailText = document.getElementById('emailText').textContent;
+        const copyConfirmation = document.getElementById('copyConfirmation');
+
+        copyEmailBtn.addEventListener('click', function() {
+            try {
+                // Create a temporary textarea element to hold the text
+                const textArea = document.createElement("textarea");
+                textArea.value = emailText;
+                document.body.appendChild(textArea); // Append to DOM temporarily
+                textArea.select(); // Select the text
+                document.execCommand('copy'); // Execute the copy command
+                document.body.removeChild(textArea); // Remove the temporary element
+
+                // Show confirmation message
+                copyConfirmation.classList.remove('opacity-0');
+                copyConfirmation.classList.add('opacity-100');
+                // Hide confirmation message after 2 seconds
+                setTimeout(() => {
+                    copyConfirmation.classList.remove('opacity-100');
+                    copyConfirmation.classList.add('opacity-0');
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+                // Fallback: in a real application, you might show a custom modal instead of alert.
+                // For this sandbox environment, direct copy via execCommand is the most reliable.
+                // alert('Failed to copy email. Please copy manually: ' + emailText);
+            }
+        });
+
+        // Project Modal Logic
+        const projectModal = document.getElementById('projectModal');
+        const closeButton = document.querySelector('.close-button');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+        const readMoreButtons = document.querySelectorAll('.read-more-btn');
+
+        // Store project details in a JavaScript object for dynamic loading
+        const projects = {
+            datamarts: {
+                title: "Business-Specific Data Marts for Enhanced Reporting and Analytics",
+                description: `
+                    <p class="mb-4 text-base"><strong>Background/Objective:</strong> This project aimed to create specialized data marts to improve data accessibility, enhance performance, and enable tailored analytics for individual business units, by providing streamlined, targeted access to relevant data.</p>
+                    <p class="mb-4 text-base"><strong>Responsibilities:</strong></p>
+                    <ul class="list-disc list-inside ml-4 mb-4 text-base">
+                        <li>Designed and implemented four specialized data marts (Account, Customer, Transactional, and Channel) aligned with business functions.</li>
+                        <li>Extracted, transformed, and loaded data from multiple source systems into the data marts.</li>
+                        <li>Applied dimensional modeling techniques to optimize data structure for fast querying and accurate reporting.</li>
+                        <li>Developed ETL pipelines and automated data refresh processes.</li>
+                        <li>Collaborated with business stakeholders to define key metrics and reporting requirements.</li>
+                        <li>Ensured simplified and secure access for end-users to interact with relevant data.</li>
+                    </ul>
+                    <p class="mb-4 text-base"><strong>Tools & Technologies Used:</strong> Oracle Database, PL/SQL, SSIS, Oracle Job Scheduler, Task Scheduler, Dimensional Data Modeling.</p>
+                    <p class="mb-4 text-base"><strong>Achievements/Outcomes:</strong></p>
+                    <ul class="list-disc list-inside ml-4 mb-4 text-base">
+                        <li>Enhanced query performance by narrowing data scope and reducing complex joins.</li>
+                        <li>Delivered tailored analytics capabilities for function-specific reporting.</li>
+                        <li>Simplified data access for business users, reducing reliance on IT.</li>
+                        <li>Strengthened data security through role-based access controls.</li>
+                        <li>Supported organizational goals of data democratization and improved decision-making.</li>
+                    </ul>
+                `
+            },
+            rac: {
+                title: "Risk Assessment Criteria (RAC) System for Loan Eligibility",
+                description: `
+                    <p class="mb-4 text-base"><strong>Background/Objective:</strong> The project aimed to create an automated, scalable, and data-driven system to assess customer eligibility for loan products, replacing manual evaluations.</p>
+                    <p class="mb-4 text-base"><strong>Responsibilities:</strong></p>
+                    <ul class="list-disc list-inside ml-4 mb-4 text-base">
+                        <li>Collaborated with cross-functional teams to implement business-defined RAC rules.</li>
+                        <li>Designed and developed an Oracle PL/SQL package with procedures for specific business rules.</li>
+                        <li>Extracted and processed customer account data, calculated turnover, and applied a trimmed mean method.</li>
+                        <li>Computed transaction counts and behavioral indicators.</li>
+                        <li>Built a "RAC Book" (structured table) to aggregate existing loan information.</li>
+                        <li>Developed logic to assess current loan eligibility based on customer turnover and outstanding obligations.</li>
+                        <li>Automated the entire pipeline using Oracle Job Scheduler for daily refresh.</li>
+                        <li>Implemented a robust logging and alerting system with email notifications for rapid troubleshooting.</li>
+                        <li>Delivered final outputs via an API to power a frontend application.</li>
+                    </ul>
+                    <p class="mb-4 text-base"><strong>Tools & Technologies Used:</strong> Oracle PL/SQL, Oracle Database, Oracle Job Scheduler, SQL, APIs, Email Notification System.</p>
+                    <p class="mb-4 text-base"><strong>Achievements/Outcomes:</strong></p>
+                    <ul class="list-disc list-inside ml-4 mb-4 text-base">
+                        <li>Reduced customer onboarding time by automating eligibility assessment.</li>
+                        <li>Enabled a more flexible and responsive customer experience.</li>
+                        <li>Increased customer retention through timely and tailored credit offerings.</li>
+                        <li>Contributed to revenue growth by expanding access to loan products via real-time decisioning.</li>
+                        <li>Improved operational reliability with automated monitoring and error handling.</li>
+                    </ul>
+                `
+            },
+            ssot: {
+                title: "Single Source of Truth (SSOT) Implementation for Bank-wide Data Consolidation",
+                description: `
+                    <p class="mb-4 text-base"><strong>Background/Objective:</strong> This critical initiative aimed to consolidate multiple disparate data sources into a centralized data warehouse to provide authentic, consistent, and timely data for decision-making across the bank, increasing data reliability, accessibility, and trust.</p>
+                    <p class="mb-4 text-base"><strong>Responsibilities:</strong></p>
+                    <ul class="list-disc list-inside ml-4 mb-4 text-base">
+                        <li>Developed and maintained Oracle packages and procedures to migrate and transform data from various source systems into the centralized warehouse.</li>
+                        <li>Utilized Oracle DB links and SSIS for ETL processes.</li>
+                        <li>Automated data refresh processes using Oracle Job Scheduler and Windows Task Scheduler.</li>
+                        <li>Created interactive reports and dashboards using SQL Server Reporting Services (SSRS).</li>
+                        <li>Hosted reports on an IIS-based internal web portal for easy business user access.</li>
+                        <li>Monitored process execution through logging mechanisms with automated email alerts.</li>
+                        <li>Translated over 40 key business metrics (e.g., Loan Volumes, Customer Product Holdings, Transaction Counts and Volumes) into high-performance PL/SQL scripts and Oracle packages incorporating complex aggregations, conditional logic, and data segmentation.</li>
+                        <li>Designed and delivered SSRS reports that converted complex financial and operational data into intuitive visualizations.</li>
+                        <li>Deployed reports on a secure IIS-hosted portal to facilitate streamlined user access and self-service analytics.</li>
+                        <li>Implemented automation from data ingestion to reporting, supported by detailed monitoring and alerting systems.</li>
+                    </ul>
+                    <p class="mb-4 text-base"><strong>Tools & Technologies Used:</strong> Oracle Database, PL/SQL, Oracle DB links, SSIS, SQL Server Reporting Services (SSRS), IIS, Oracle Job Scheduler, Windows Task Scheduler.</p>
+                    <p class="mb-4 text-base"><strong>Business Impact:</strong></p>
+                    <ul class="list-disc list-inside ml-4 mb-4 text-base">
+                        <li>Delivered a trusted, unified source of data, improving confidence in business decisions.</li>
+                        <li>Enhanced data accessibility and self-service capabilities for business users.</li>
+                        <li>Reduced manual reporting efforts through automation and streamlined workflows.</li>
+                        <li>Strengthened operational risk management with timely, accurate insights.</li>
+                    </ul>
+                `
+            },
+            udacityGithub: { // New project ID
+                title: "NYC Payroll Data Analytics (Udacity GitHub Project)",
+                description: `
+                    <p class="mb-4 text-base"><strong>Background/Objective:</strong> This project involves developing data integration pipelines for NYC Payroll Data Analytics, demonstrating proficiency in managing and transforming data from various sources. The aim is to create robust and efficient data flows for analytical purposes.</p>
+                    <p class="mb-4 text-base"><strong>Responsibilities:</strong></p>
+                    <ul class="list-disc list-inside ml-4 mb-4 text-base">
+                        <li>Designed and implemented dataflows to extract, transform, and load NYC Payroll data.</li>
+                        <li>Configured datasets and linked services for connecting to diverse data sources.</li>
+                        <li>Developed and orchestrated data pipelines for automated data ingestion and processing.</li>
+                        <li>Managed and organized factory components for efficient data integration.</li>
+                        <li>Utilized various components within the data pipeline to ensure data integrity and quality.</li>
+                        <li>Conducted testing (folder named "TEST") to validate data transformations and pipeline performance.</li>
+                        <li>Managed project configuration using "publish_config.json" for deployment readiness.</li>
+                    </ul>
+                    <p class="mb-4 text-base"><strong>Tools & Technologies Used:</strong> Azure Data Factory (implied by folder structure: dataflow, dataset, factory, pipeline), Data Transformation Concepts, Data Integration Best Practices.</p>
+                    <p class="mb-4 text-base"><strong>Key Learnings/Impact:</strong> This project showcases practical experience in building end-to-end data integration solutions, emphasizing structured data management, automated processing, and readiness for deployment.</p>
+                    <p class="mb-4 text-base"><strong>View Project on GitHub:</strong> <a href="https://github.com/Eb-raheeem/Udacity" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Eb-raheeem/Udacity</a></p>
+                `
+            }
+        };
+
+        // Add click event listeners to all "Read More" buttons
+        readMoreButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const projectId = this.dataset.project; // Get the project ID from the data-project attribute
+                const project = projects[projectId]; // Retrieve project details from the 'projects' object
+                if (project) {
+                    modalTitle.textContent = project.title; // Set modal title
+                    modalContent.innerHTML = project.description; // Set modal content using innerHTML
+                    projectModal.style.display = 'block'; // Show the modal
                 }
             });
         });
 
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+        // Close the modal when the close button is clicked
+        closeButton.addEventListener('click', function() {
+            projectModal.style.display = 'none';
+        });
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        // Close the modal if the user clicks anywhere outside of the modal content
+        window.addEventListener('click', function(event) {
+            if (event.target == projectModal) {
+                projectModal.style.display = 'none';
+            }
         });
     </script>
 </body>
